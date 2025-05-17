@@ -99,9 +99,10 @@ record_temperature(&agent, manufacturer_address, "D123", 2300);
 
 ---
 
-## 📸 Deployment Proof
+## 📸 Deployment Proof![Screenshot 2025-05-17 133627](https://github.com/user-attachments/assets/6d2d7be7-4a46-476d-98ce-56904f2a17b2)
 
-![Transaction Screenshot](./f45b0caa-3e00-40ce-8f06-8526ff10e5ad.png)
+
+
 
 _This image shows the successful transaction confirming deployment on Aptos Devnet._
 
