@@ -1,0 +1,15 @@
+[package]
+name = "aptos-test"
+version = "1.0.0"
+authors = []
+
+[addresses]
+ColdChain ="0x51a8ce6e66b1a482c9ae6328ec39aa9e0d8eea3f18cb5e0cc9f33c5e6e5c74dc"
+[dev-addresses]
+
+[dependencies.AptosFramework]
+git = "https://github.com/aptos-labs/aptos-framework.git"
+rev = "mainnet"
+subdir = "aptos-framework"
+
+[dev-dependencies]
