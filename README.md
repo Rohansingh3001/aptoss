@@ -30,3 +30,83 @@ struct Drug has key, store {
     last_update: u64,   // Timestamp of last update (microseconds)
     valid: bool         // Validity flag
 }
+```
+
+---
+
+## ❗ Error Codes
+
+| Code | Constant                     | Meaning                                      |
+|------|------------------------------|----------------------------------------------|
+| 1    | `ETEMPERATURE_OUT_OF_RANGE`  | Recorded temperature is outside valid range |
+| 2    | `EDRUG_NOT_REGISTERED`       | Drug is not registered in the system         |
+
+---
+
+## 🔧 Public Entry Functions
+
+### `register_drug`
+
+Registers a new drug under the manufacturer's signer account.
+
+```move
+public entry fun register_drug(
+    manufacturer: &signer,
+    id: String,
+    name: String,
+    min_temp: u64,
+    max_temp: u64
+)
+```
+
+- `min_temp` and `max_temp` are in Celsius × 100 (e.g., 2500 = 25.00°C).
+
+---
+
+### `record_temperature`
+
+Records a temperature reading for a registered drug and checks its validity.
+
+```move
+public entry fun record_temperature(
+    recorder: &signer,
+    manufacturer: address,
+    drug_id: String,
+    temperature: u64
+) acquires Drug
+```
+
+- Marks the drug as invalid if the temperature is out of range.
+
+---
+
+## 🧪 Example Usage
+
+```move
+// Registering a drug
+register_drug(&manufacturer, "D123", "VaccineX", 2000, 2500);
+
+// Recording temperature
+record_temperature(&agent, manufacturer_address, "D123", 2300);
+```
+
+---
+
+## 📄 Deployment Info
+
+- **Module Name:** `DrugRegistry`
+- **Contract Address:** `0xc988f308d95d60be8db1b44c820475cff893808611a201a40c12a1a3b1445fd2`
+
+---
+
+## 📸 Deployment Proof
+
+![Transaction Screenshot](./f45b0caa-3e00-40ce-8f06-8526ff10e5ad.png)
+
+_This image shows the successful transaction confirming deployment on Aptos Devnet._
+
+---
+
+## 📜 License
+
+MIT
